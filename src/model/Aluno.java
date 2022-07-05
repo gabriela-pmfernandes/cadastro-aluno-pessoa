@@ -1,28 +1,24 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Aluno.Status;
+
 import util.Contador;
+import util.NormalizaData;
 
 public class Aluno extends Pessoa{
-	
-	public enum Status{
-		CADASTRADO,
-		EXCLUÍDO
-	}
-	
 	private Integer id;
 	private Double notaFinalCurso;
-	private Status status;
+	private LocalDate data;
 	
-	public Aluno(String nome, String telefone, int diaNascimento, int mesNascimento,int anoNascimento, Double notaFinalCurso) {
+	public Aluno(String nome, String telefone, int diaNascimento, int mesNascimento,int anoNascimento, Double notaFinalCurso, LocalDate data) {
 		super(nome, telefone, diaNascimento, mesNascimento, anoNascimento);
 		this.id = Contador.proximoId();
 		this.notaFinalCurso = notaFinalCurso;
-		this.status = Status.CADASTRADO;
+		this.data = LocalDate.now();
 	}
 	
 	public Integer getId() {
@@ -41,19 +37,19 @@ public class Aluno extends Pessoa{
 		this.notaFinalCurso = notaFinalCurso;
 	}
 	
-	public Status getStatus() {
-		return status;
+	public LocalDate getData() {
+		return data;
 	}
 
-	public void setStatus(Status status) {
-		this.status = status;
+	public void setData(LocalDate data) {
+		this.data = data;
 	}
 
 	@Override
 	public String toString() {
-		return "Aluno [Nota Final do Curso: " + notaFinalCurso + ", ID: " + id + ", Nome: " + nome + ", Telefone: " + telefone
+		return "Aluno [ID: " + id + ", Nome: " + nome + ", Telefone: " + telefone
 				+ ", Data de Nascimento: " + diaNascimento + "/" + mesNascimento + "/"
-				+ anoNascimento + LocalDate.now()+ "]";
+				+ anoNascimento + ", Nota Final do Curso: " + notaFinalCurso + ", Cadastrado dia: " + NormalizaData.formata(getData()) +"]";
 	}
 	
 	

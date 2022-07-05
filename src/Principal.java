@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 import model.Aluno;
-import model.Aluno.Status;
 import model.Pessoa;
 import service.AlunoService;
 import service.PessoaService;
@@ -43,17 +42,20 @@ public class Principal {
 				}else if(opcaoEscolhidaAluno == 2) {
 					alunoService.mostrarTodos();
 				}else if(opcaoEscolhidaAluno == 3) {
+					entrada.nextLine();
 					System.out.println("Digite o ID de qual aluno você quer atualizar: ");
 					alunoService.mostrarTodos();
 					int buscaPorIdAluno = entrada.nextInt();
 					Aluno aluno = alunoService.buscarAlunoPorId(buscaPorIdAluno);
-					alunoService.mostrarTodos();
-					alunoService.excluir(buscaPorIdAluno);
+					alunoService.excluirAluno(buscaPorIdAluno);
 					alunoService.cadastrarAluno();
-					
 				}else if(opcaoEscolhidaAluno == 4) {
+					entrada.nextLine();
+					System.out.println("Digite o ID que você quer atualizar: ");
 					alunoService.mostrarTodos();
-					Aluno aluno = alunoService.buscarAlunoPorId(opcaoEscolhidaAluno);
+					int idAlunoExcluir = entrada.nextInt();
+					Aluno aluno = alunoService.buscarAlunoPorId(idAlunoExcluir);
+					alunoService.excluirAluno(idAlunoExcluir);
 				}
 			}else if(identificacao == 0) {
 				continua = false;

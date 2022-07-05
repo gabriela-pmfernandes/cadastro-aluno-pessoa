@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import model.Aluno;
-import model.Aluno.Status;
 import model.Pessoa;
 import repository.RepositoryImplement;
 import util.Contador;
@@ -33,7 +32,7 @@ public class AlunoService {
 		System.out.println("Digite a nota final do curso: ");
 		Double notaFinalCurso = entrada.nextDouble();
 		
-		Aluno aluno = new Aluno(nome, telefone, diaNascimento, mesNascimento, anoNascimento, notaFinalCurso);
+		Aluno aluno = new Aluno(nome, telefone, diaNascimento, mesNascimento, anoNascimento, notaFinalCurso, LocalDate.now());
 		repository.salvar(aluno.getId(), aluno);
 	}
 	
@@ -42,22 +41,16 @@ public class AlunoService {
 			System.out.println(aluno);
 		}
 	}
-	public void mostrarTodosAlunosCadastrados() {
-		List<Aluno> alunos = repository.buscarTodos();
-		
-		alunos.stream().filter(a -> a.getStatus() == Status.CADASTRADO).forEach(a -> {
-			System.out.println(a);
-		});
-	}
-	public void atualizarDadosAluno(Aluno aluno) {
-		List<Aluno> alunos = this.repository.buscarTodos();
-		alunos.stream().filter(a -> a.getStatus() == Status.EXCLUÍDO).forEach(a -> System.out.println(a));
-	}
+	
 	public Aluno buscarAlunoPorId(Integer id) {
+		List<Aluno> alunos = this.repository.buscarTodos();
+		Aluno aluno = alunos.stream().filter(a -> a.getId().equals(id)).findFirst().orElse(null);
+		repository.excluir(id);
 		return this.repository.buscaPorId(id);
 	}
-	public void excluir(Integer id) {
+	public void excluirAluno(Integer id) {
 		Aluno aluno = this.repository.buscaPorId(id);
+		
 	}
 	
 }

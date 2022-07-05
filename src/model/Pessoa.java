@@ -3,6 +3,7 @@ package model;
 import java.time.LocalDate;
 
 import util.Contador;
+import util.NormalizaData;
 
 public class Pessoa {
 	protected Integer id;
@@ -11,6 +12,7 @@ public class Pessoa {
 	protected int diaNascimento;
 	protected int mesNascimento;
 	protected int anoNascimento;
+	private LocalDate data;
 	
 	public Pessoa(String nome, String telefone, int diaNascimento, int mesNascimento, int anoNascimento) {
 		this.id = Contador.proximoId();
@@ -19,6 +21,7 @@ public class Pessoa {
 		this.diaNascimento = diaNascimento;
 		this.mesNascimento = mesNascimento;
 		this.anoNascimento = anoNascimento;
+		this.data = LocalDate.now();
 	}
 	
 	public Integer getId() {
@@ -68,11 +71,19 @@ public class Pessoa {
 	public void setAnoNascimento(int anoNascimento) {
 		this.anoNascimento = anoNascimento;
 	}
+	
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
 
 	@Override
 	public String toString() {
 		return "Pessoa [ID: " + id + ", Nome: " + nome + ", Telefone: " + telefone + ", Data de Nascimento: " + diaNascimento
-				+ "/" + mesNascimento + "/" + anoNascimento + LocalDate.now() +"]";
+				+ "/" + mesNascimento + "/" + anoNascimento + ", Cadastrado dia: " + NormalizaData.formata(getData()) +"]";
 	}
 	
 	

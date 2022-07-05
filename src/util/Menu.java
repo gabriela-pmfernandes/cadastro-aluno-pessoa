@@ -28,7 +28,6 @@ public class Menu {
 		System.out.println("1 - Cadastrar um aluno");
 		System.out.println("2 - Mostrar alunos cadastrados");
 		System.out.println("3 - Atualizar dados de um aluno");
-		System.out.println("4 - Excluir aluno");
-		
+		System.out.println("4 - Excluir aluno");	
 	}
 }
