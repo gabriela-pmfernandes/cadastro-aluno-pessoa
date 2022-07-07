@@ -26,13 +26,20 @@ public class Principal {
 				}else if(opcaoEscolhidaPessoa == 2) {
 					pessoaService.mostrarTodos();
 				}else if(opcaoEscolhidaPessoa == 3) {
+					entrada.nextLine();
 					System.out.println("Digite o ID de qual pessoa você quer atualizar: ");
 					pessoaService.mostrarTodos();
 					int buscaPorIdPessoa = entrada.nextInt();
 					Pessoa pessoa = pessoaService.buscarPessoaPorId(buscaPorIdPessoa);
+					pessoaService.excluirPessoa(buscaPorIdPessoa);
+					pessoaService.cadastrarPessoa();
 				}else if(opcaoEscolhidaPessoa == 4) {
+					entrada.nextLine();
+					System.out.println("Digite o ID de qual pessoa você quer excluir");
 					pessoaService.mostrarTodos();
-					Pessoa pessoa = pessoaService.buscarPessoaPorId(opcaoEscolhidaPessoa);
+					int idPessoaExcluir = entrada.nextInt();
+					Pessoa pessoa = pessoaService.buscarPessoaPorId(idPessoaExcluir);
+					pessoaService.excluirPessoa(idPessoaExcluir);
 				}
 			}else if(identificacao == 2) {
 				Menu.cadastroAluno();
@@ -51,7 +58,7 @@ public class Principal {
 					alunoService.cadastrarAluno();
 				}else if(opcaoEscolhidaAluno == 4) {
 					entrada.nextLine();
-					System.out.println("Digite o ID que você quer atualizar: ");
+					System.out.println("Digite o ID de qual aluno você quer excluir: ");
 					alunoService.mostrarTodos();
 					int idAlunoExcluir = entrada.nextInt();
 					Aluno aluno = alunoService.buscarAlunoPorId(idAlunoExcluir);

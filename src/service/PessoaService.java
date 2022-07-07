@@ -1,5 +1,6 @@
 package service;
 
+import java.util.List;
 import java.util.Scanner;
 
 import model.Pessoa;
@@ -37,6 +38,12 @@ public class PessoaService {
 	}
 	
 	public Pessoa buscarPessoaPorId(Integer id) {
+		List<Pessoa> pessoas = this.repository.buscarTodos();
+		Pessoa pessoa = pessoas.stream().filter(p -> p.getId().equals(id)).findFirst().orElse(null);
+		repository.excluir(id);
 		return this.repository.buscaPorId(id);
+	}
+	public void excluirPessoa(Integer id) {
+		Pessoa pessoa = this.repository.buscaPorId(id);
 	}
 }

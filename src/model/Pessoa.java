@@ -82,8 +82,8 @@ public class Pessoa {
 
 	@Override
 	public String toString() {
-		return "Pessoa [ID: " + id + ", Nome: " + nome + ", Telefone: " + telefone + ", Data de Nascimento: " + diaNascimento
-				+ "/" + mesNascimento + "/" + anoNascimento + ", Cadastrado dia: " + NormalizaData.formata(getData()) +"]";
+		return "Pessoa [ID: " + this.getId() + ", Nome: " + this.getNome() + ", Telefone: " + this.getTelefone() + ", Data de Nascimento: " + this.getDiaNascimento()
+				+ "/" + this.getMesNascimento() + "/" + this.getAnoNascimento() + ", Cadastrado dia: " + NormalizaData.formata(getData()) +"]";
 	}
 	
 	

@@ -47,9 +47,9 @@ public class Aluno extends Pessoa{
 
 	@Override
 	public String toString() {
-		return "Aluno [ID: " + id + ", Nome: " + nome + ", Telefone: " + telefone
-				+ ", Data de Nascimento: " + diaNascimento + "/" + mesNascimento + "/"
-				+ anoNascimento + ", Nota Final do Curso: " + notaFinalCurso + ", Cadastrado dia: " + NormalizaData.formata(getData()) +"]";
+		return "Aluno [ID: " + this.getId() + ", Nome: " + this.getNome() + ", Telefone: " + this.getTelefone()
+				+ ", Data de Nascimento: " + this.getDiaNascimento() + "/" + this.getMesNascimento() + "/"
+				+ this.getAnoNascimento() + ", Nota Final do Curso: " + this.getNotaFinalCurso() + ", Cadastrado dia: " + NormalizaData.formata(getData()) +"]";
 	}
 	
 	
